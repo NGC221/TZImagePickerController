@@ -13,6 +13,7 @@
 #import "TZImagePickerController.h"
 #import "TZProgressView.h"
 
+
 @interface TZAssetCell ()
 @property (weak, nonatomic) UIImageView *imageView;       // The photo / 照片
 @property (weak, nonatomic) UIImageView *selectImageView;
@@ -151,6 +152,9 @@
 
 /// 只在单选状态且allowPreview为NO时会有该事件
 - (void)didTapImageView {
+//    if ([self isGIF:_model]) {
+//        return;
+//    }
     if (self.didSelectPhotoBlock) {
         self.didSelectPhotoBlock(NO);
     }

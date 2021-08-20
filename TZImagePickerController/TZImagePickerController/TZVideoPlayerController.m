@@ -14,6 +14,7 @@
 #import "TZImagePickerController.h"
 #import "TZPhotoPreviewController.h"
 #import "TZVideoCropController.h"
+#import "TZVideoPlayerController+XJVideoPlayerTime.h"
 
 @interface TZVideoPlayerController () {
     AVPlayer *_player;
@@ -221,6 +222,11 @@
         return;
     }
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+    
+    if ([self timeabout15:imagePickerVc]) {
+        return;
+    }
+
     if (imagePickerVc.allowEditVideo) {
         [imagePickerVc showProgressHUD];
         [[TZImageManager manager] getVideoOutputPathWithAsset:_model.asset presetName:imagePickerVc.presetName success:^(NSString *outputPath) {
